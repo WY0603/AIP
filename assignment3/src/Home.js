@@ -8,7 +8,7 @@ const Home = (props) => {
       <Jumbotron fluid>
         <Container fluid>
           <h1 className="display-3">EasyDining</h1>
-          <p className="lead">Welcome to EasyDining.</p>
+          <h2 className="lead">Welcome to EasyDining.</h2>
           <p className="lead">EasyDining is a reliable and reputable website for restaurant reservation. </p>
           <p className="lead"> Enjoy your booking with us! </p>
         </Container>
