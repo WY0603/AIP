@@ -1,25 +1,11 @@
-var express = require('express');
-var path = require('path');
-var ejs = require('ejs');
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 5000;
 
-var app = express();
+// console.log that your server is up and running
+app.listen(port, () => console.log(`Listening on port ${port}`));
 
-// 对所有(/)URL或路由返回index.html 
-app.get('/', function (req, res) {
-    res.render('index');
+// create a GET route
+app.get('/express_backend', (req, res) => {
+  res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
 });
-
-// 设置views路径和模板
-app.set('views', './client/view');
-app.set('view engine', 'html');
-app.engine('html', ejs.renderFile);
-
-// 静态文件配置
-app.use('/client/static', express.static(path.join(__dirname, 'client/static')));
-
-// 启动一个服务，监听从8888端口进入的所有连接请求
-var server = app.listen(8888, function(){
-    var host = server.address().address;
-    var port = server.address().port;
-    console.log('Listening at http://%s:%s', host, port);
-}); 
