@@ -26,6 +26,12 @@ mongoose.connect(dbUrl, {useNewUrlParser : true}, (err) => {
 // console.log that your server is up and running
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
+app.get('/register',function (req,res) {
+    res.redirect('/signup')
+})
+app.get('/login',function (req,res) {
+    res.redirect('/login')
+})
 app.post('/register', (req, res) => {
     var user = new User(req.body)
 

@@ -49,7 +49,7 @@ export default class Login extends Component {
                     <button type="submit" className="btn btn-success btn-block" onClick={this.handleSubmit.bind(this)}>Sign in</button>
                 </form>
                 <div className="message">
-                    <p>No account? <a href="/register">Sign up here</a>.</p>
+                    <p>No account? <a href="/signup">Sign up here</a>.</p>
                 </div>
             </div>
         );
