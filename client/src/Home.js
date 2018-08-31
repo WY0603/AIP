@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import { Jumbotron, Container } from 'reactstrap';
 
+/*
+
+*/
 const Home = (props) => {
   return (
     <div>
