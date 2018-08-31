@@ -3,6 +3,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 var mongoose = require('mongoose');
 
+// http://mlab.com, account:wangyao0603, password:obsidian0822.
 var dbUrl = 'mongodb://aip:aip2018@ds241012.mlab.com:41012/aip';
 
 var User = mongoose.model('User', {
