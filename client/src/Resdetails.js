@@ -2,6 +2,10 @@ Resdetails
 import React, { Component } from 'react';
 import './App.css';
 
+/*
+this component will show detail of restaurant which customer click it in list
+*/
+
 class Resdetails extends Component {
   render() {
 

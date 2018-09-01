@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-
+/*
+this component will show list of restaurant
+*/
 class Restaurant extends Component {
   render() {
     const restaurants = [
