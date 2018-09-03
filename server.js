@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-
+// database configuration
 // http://mlab.com, account:wangyao0603, password:obsidian0822.
 var dbUrl = 'mongodb://aip:aip2018@ds241012.mlab.com:41012/aip';
 
