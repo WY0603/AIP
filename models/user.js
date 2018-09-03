@@ -1,4 +1,4 @@
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 
 // 连接数据库
 //mongoose.connect('mongodb://localhost/test', { useMongoClient: true })

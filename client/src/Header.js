@@ -1,64 +1,37 @@
 import React from 'react';
-import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem
-    } from 'reactstrap';
-import {Link} from "react-router";
-
-
-
-
+import {NavLink} from "react-router-dom";
 
 class Header extends React.Component{
 
-    constructor(props) {
-        super(props);
-
-
-
-    }
 
     render() {
         return (
             <div>
-                <Navbar color="light" light expand="md">
-                    <NavbarBrand href="/"><img src="./public/img/logo.png"/></NavbarBrand>
-                    <NavbarBrand href="/reslist">Restaurant</NavbarBrand>
+                <header>
+                    <nav className="navbar navbar-expand-md fixed-top bg-dark">
+                        <div className="col-md-2">
+                            <NavLink exact to="/" style={{color: 'white'}}  >Home</NavLink>
+                        </div>
+                        <div className="col-md-2" >
+                            <NavLink to='/restaurant' style={{color: 'white'}} >Restaurant</NavLink>
+                        </div>
+                        <div className="col-md"></div>
+                        <div>
+                            <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"/>
+                        </div>
+                        <div className="col-md-1 btn btn-outline-success">
+                            <NavLink to='/login' style={{color: 'white'}} >Login</NavLink>
+                        </div>
+                        <div className="col-md-1 btn btn-outline-success ">
+                            <NavLink to='/signup' style={{color: 'white'}}  >Signup</NavLink>
+                        </div>
 
-                        <Nav className="ml-auto" navbar>
-                            <NavItem>
-                               <input type="text" placeholder="Search Restaurant" className="form-control"/>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink>
-                                <Link to="/login">Login</Link>
-                                </NavLink>
-                            </NavItem>
-
-                            <NavItem>
-                                <NavLink>
-                                <Link to="/signUp">signup</Link>
-                                </NavLink>
-                            </NavItem>
-
-                        </Nav>
-
-                </Navbar>
-                <div>{this.props.children}</div>
+                    </nav>
+                </header>
             </div>
         );
     }
 
-
-    }
+}
 
 export default Header;
