@@ -28,7 +28,7 @@ router.post('/login', function(req, res){
                     message: 'Username or password is invalid.'
                 })
             }
-            res.redirect('/restaurant')
+            res.send('/restaurant');
         }
         )
     }else{
@@ -39,15 +39,25 @@ router.post('/login', function(req, res){
 
 router.post('/register', function(req, res){
     var user = new User(req.body)
-
+    console.log(user.password);
     user.password = md5(md5(user.password))
-
-
-    user.save((err) => {
-        if(err)
-            sendStatus(500)
-    })
-
+    User.find({
+        username: user.username
+    }),function (err, user) {
+            if (err) {
+                return res.status(500).json({
+                    err_code: 500,
+                    message: err.message
+                })
+            }
+            if (user) {
+                return res.status(200).json({
+                    err_code: 1,
+                    message: 'Username existed, please change another username.'
+                })
+            }
+    }
+    
     res.redirect('/restaurant')
 })
 
@@ -56,3 +66,7 @@ router.get('/searchList', function(req, res){
 })
 
 module.exports = router;
+
+
+
+
