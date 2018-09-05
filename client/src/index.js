@@ -10,6 +10,7 @@ import {
     NavLink,
     Switch
 } from 'react-router-dom'
+import Header from "./Header";
 import Home from "./Home";
 import Signup from "./Signup";
 import Login from "./Login";
@@ -20,16 +21,8 @@ const App = () => (
     <Router>
         <div>
             <header>
-                <nav>
-                    <ul>
-                        <li><NavLink exact to="/">Home</NavLink></li>
-                        <li><NavLink to='/restaurant'>Restaurant</NavLink></li>
-
-                        <li><NavLink to='/login'>Login</NavLink></li>
-                        <li><NavLink to="/signup">Signup</NavLink></li>
-                    </ul>
-                </nav>
-            </header>
+                <Header />
+            </header>    
             <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route path="/restaurant" component={Restaurant}/>
