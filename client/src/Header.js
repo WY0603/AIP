@@ -3,11 +3,17 @@ import {NavLink} from "react-router-dom";
 
 class Header extends React.Component{
 
+    constructor(props){
+        super(props);
+        const isLoggedIn = props.isLoggedIn;
+
+
+    }
 
     render() {
         return (
             <div>
-                <header>
+                <header style={{height: 90}}>
                     <nav className="navbar navbar-expand-md fixed-top bg-dark">
                         <div className="col-md-2">
                             <NavLink exact to="/" style={{color: 'white'}}  >Home</NavLink>
@@ -19,7 +25,7 @@ class Header extends React.Component{
                         <div>
                             <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"/>
                         </div>
-                        <div className="col-md-1 btn btn-outline-success">
+                        <div className="col-md-1 btn btn-outline-success" >
                             <NavLink to='/login' style={{color: 'white'}} >Login</NavLink>
                         </div>
                         <div className="col-md-1 btn btn-outline-success ">
