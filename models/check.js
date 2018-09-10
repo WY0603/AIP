@@ -13,6 +13,5 @@ module.exports = {
 
         console.log('vailid successfull');
         return true;
-        
     }
 }
