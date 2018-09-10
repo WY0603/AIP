@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import Header from "./Header";
 
 export default class Signup extends Component {
 
@@ -32,31 +33,37 @@ export default class Signup extends Component {
 
     render(){
         return(
-            <div className="main">
-                <div className="header">
-
-                    <h1>Sign Up</h1>
+            <div>
+                <div>
+                    <Header/>
                 </div>
 
-                    <div className="form-group">
-                        <label htmlFor="email">Email: <span style={{color:"red"}}>* </span> </label>
-                        <input type="email" className="form-control" id="email" name="email" placeholder="Please enter an email"
-                               onChange={evt => this.setState({"email":evt.target.value})} />
+                <div className="main">
+                    <div className="header">
+
+                        <h1>Sign Up</h1>
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="nickname">Username: <span style={{color:"red"}}>* </span> </label>
-                        <input type="text" className="form-control" id="username" name="username"
-                               placeholder="Please enter a username" onChange={evt => this.setState({"username":evt.target.value})}/>
+
+                        <div className="form-group">
+                            <label htmlFor="email">Email: <span style={{color:"red"}}>* </span> </label>
+                            <input type="email" className="form-control" id="email" name="email" placeholder="Please enter an email"
+                                   onChange={evt => this.setState({"email":evt.target.value})} />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="nickname">Username: <span style={{color:"red"}}>* </span> </label>
+                            <input type="text" className="form-control" id="username" name="username"
+                                   placeholder="Please enter a username" onChange={evt => this.setState({"username":evt.target.value})}/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="password">Password: <span style={{color:"red"}}>* </span> </label>
+                            <input type="password" className="form-control" id="password" name="password"
+                                   placeholder="Please enter a password" onChange={evt => this.setState({"password":evt.target.value})}/>
+                        </div>
+                        <button type="button" className="btn btn-success btn-block" onClick={this.handleSubmit.bind(this)}>Sign up</button>
+
+                    <div className="message">
+                        <p>Already Sign Up? <a href="/login">Sign In here</a>.</p>
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="password">Password: <span style={{color:"red"}}>* </span> </label>
-                        <input type="password" className="form-control" id="password" name="password"
-                               placeholder="Please enter a password" onChange={evt => this.setState({"password":evt.target.value})}/>
-                    </div>
-                    <button type="button" className="btn btn-success btn-block" onClick={this.handleSubmit.bind(this)}>Sign up</button>
-            
-                <div className="message">
-                    <p>Already Sign Up? <a href="/login">Sign In here</a>.</p>
                 </div>
             </div>
         );

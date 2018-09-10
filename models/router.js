@@ -11,10 +11,13 @@ router.post('/', function(req, res){
 router.post('/login', function(req, res){
     
     var user = new User(req.body);
+    //console.log(req.body);
     if (check.checkInject(req.body)){
+        //console.log("login");
         User.findOne({
                 username: user.username,
                 password: md5(md5(user.password))
+
             },function (err, user) {
             if (err) {
                 return res.status(500).json({
@@ -28,12 +31,18 @@ router.post('/login', function(req, res){
                     message: 'Username or password is invalid.'
                 })
             }
-            res.send('/restaurant');
-        }
-        )
+            res.status(200).json({
+                err_code: 0,
+                message: 'login success'
+            })
+
+
+        })
     }else{
         res.send('error');
     }
+
+
 
 })
 
@@ -53,7 +62,7 @@ router.post('/register', function(req, res){
             if (user) {
                 return res.status(200).json({
                     err_code: 1,
-                    message: 'Username existed, please change another username.'
+                    message: 'Username existed, please change to another username.'
                 })
             }
     }
