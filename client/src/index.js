@@ -27,7 +27,7 @@ const App = () => (
             </header> */}
             <Switch>
                 <Route exact path="/" component={Home}/>
-                <Route path="/restaurant" component={Restaurant}/>
+                <Route path='/restaurant' component={Restaurant}/>
                 <Route path="/login" component={Login}/>
                 <Route path="/signup" component={Signup}/>
 

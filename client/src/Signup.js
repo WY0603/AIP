@@ -24,11 +24,27 @@ export default class Signup extends Component {
             return false;
         }else{
             
-        fetch('http://localhost:5000/register',{
+        fetch('/register',{
             method:'post',
             body: JSON.stringify(this.state),
             headers: {"Content-Type":"application/json"},
         })
+        .then(response=>response.json())
+        .then(responseJson => {
+
+
+            //在这里 跳转
+            if(responseJson.err_code === 0){
+                window.location.href="/restaurant";
+            }
+            else{
+                alert(responseJson.message);
+            }
+
+        }).catch(function(e){
+            console.log('Oops,error');
+        })
+
     }
     }
 

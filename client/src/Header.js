@@ -3,11 +3,10 @@ import {NavLink} from "react-router-dom";
 
 class Header extends React.Component{
 
+    
     constructor(props){
         super(props);
-        const isLoggedIn = props.isLoggedIn;
-
-
+        console.log(props.username);
     }
 
     render() {

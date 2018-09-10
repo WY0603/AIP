@@ -26,10 +26,9 @@ export default class Login extends Component {
         .then(response=>response.json())
         .then(responseJson => {
 
-
             //在这里 跳转
             if(responseJson.err_code === 0){
-                window.location.href="/restaurant";
+                window.location.href="/restaurant/"+this.state.username.trim();
             }
             else{
                 alert(responseJson.message);

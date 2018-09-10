@@ -8,66 +8,64 @@ import Header from "./Header";
 this component will show list of restaurant
 */
 class Restaurant extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            "restaurants": [],
+        }; 
+        fetch('/resListAll',{
+            method:'get',
+            headers: {"Content-Type":"application/json"},
+        })
+        .then(response=>response.json())
+        .then(responseJson => {
+        this.setState({
+            "restaurants": responseJson,
+        })
+
+        })
+    }
+
+
+
+
     render() {
-      const restaurants = [
-      {name: 'R1', address: 'Address1', contactNo: '12345'},
-      {name: 'R2', address: 'Address2', contactNo: '23456'}
-      ]
+      
 
 
     return (
+     <div>
+     <div>
+     <Header />
+     </div>
      
-      {restaurants.map((restaurant, i) =>{
+
+         {this.state.restaurants.map((restaurant, i) =>{
         return(
           <div key={i}>
       <Media>
       <Media left href="#">
-        <Media object data-src="holder.js/64x64" alt="Generic placeholder image" />
+        <Media object src={restaurant.r_pic}  style={{height:200,width:200}} alt="Generic placeholder image" />
       </Media>
       <Media body>
         <Media heading>
-          {restaurant.name}
+          {restaurant.r_name}
         </Media>
-         {restaurant.address}
+         {restaurant.r_address}
          <br/>
-         {restaurant.contactNo}
+         {restaurant.r_number}
       </Media>
     </Media>
-    <Button color="success" >Details</Button>{' '}
-    <p>_____________________________________________________________________________________________________________________________</p>
+    <Button color="success" style={{marginLeft:400}} href="/Resdetails">Details</Button>{' '}
+    <p>_____________________________________________________________</p>
           </div>
           )
       })}
 
-    </div>
-    );
-  }
 
-      return (
-
-        <div>
-          <div>
-              <div>
-                  <Header/>
-              </div>
-          </div>
-
-        {restaurants.map((restaurant, i) =>{
-          return (
-             <div key={i}>
-
-              <h1>{restaurant.name}</h1>
-              <p>{restaurant.address}</p>
-              <p>{restaurant.contactNo}</p>
-              <button to="/Resdetails"> More Details </button>
-              <hr />
-             </div>
-            )
-        })}
-
-        </div>
-      );
-    }
+</div>
+   )  
+ }
 }
 
-export default Restaurant;
+export default Restaurant
