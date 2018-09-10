@@ -22,6 +22,7 @@ export default class Signup extends Component {
             alert ("Pleaze enter a valid email address.");
             return false;
         }else{
+            
         fetch('http://localhost:5000/register',{
             method:'post',
             body: JSON.stringify(this.state),

@@ -17,7 +17,6 @@ export default class Login extends Component {
             
         } else{
 
-        
         fetch('/login',{
             method:'post',
             body: JSON.stringify(this.state),

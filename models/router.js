@@ -50,7 +50,7 @@ router.post('/register', function(req, res){
                     message: err.message
                 })
             }
-            if (user) {
+            if (user.username) {
                 return res.status(200).json({
                     err_code: 1,
                     message: 'Username existed, please change another username.'

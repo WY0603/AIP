@@ -17,6 +17,7 @@ import Login from "./Login";
 import Restaurant from "./Restaurant";
 
 
+
 const App = () => (
     <Router>
         <div>
@@ -28,6 +29,7 @@ const App = () => (
                 <Route path="/restaurant" component={Restaurant}/>
                 <Route path="/login" component={Login}/>
                 <Route path="/signup" component={Signup}/>
+
 
             </Switch>
         </div>

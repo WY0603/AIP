@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
+import { Media } from 'reactstrap';
+import { Button } from 'reactstrap';
 /*
 this component will show list of restaurant
 */
@@ -12,21 +13,33 @@ class Restaurant extends Component {
 
     return (
       <div>
-      
+      <br />
+      <br />
+      <br />
+      <br />
       {restaurants.map((restaurant, i) =>{
-        return (
-           <div key={i}>
-          
-            <h1>{restaurant.name}</h1>
-            <p>{restaurant.address}</p>
-            <p>{restaurant.contactNo}</p>
-            <button href="/Resdetails"> More Details </button> 
-            <hr />
-           </div>
+        return(
+          <div key={i}>
+      <Media>
+      <Media left href="#">
+        <Media object data-src="holder.js/64x64" alt="Generic placeholder image" />
+      </Media>
+      <Media body>
+        <Media heading>
+          {restaurant.name}
+        </Media>
+         {restaurant.address}
+         <br/>
+         {restaurant.contactNo}
+      </Media>
+    </Media>
+    <Button color="success" >Details</Button>{' '}
+    <p>_____________________________________________________________________________________________________________________________</p>
+          </div>
           )
-      })} 
-      
-      </div>
+      })}
+
+    </div>
     );
   }
 }
