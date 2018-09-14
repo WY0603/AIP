@@ -20,15 +20,12 @@ class Header extends React.Component{
                         <div className="col-md-2" >
                             <NavLink to='/restaurant' style={{color: 'white'}} >Restaurant</NavLink>
                         </div>
-                        <div className="col-md"></div>
-                        <div>
-                            <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"/>
-                        </div>
+                        
                         <div className="col-md-1 btn btn-outline-success" >
                             <NavLink to='/login' style={{color: 'white'}} >Login</NavLink>
                         </div>
                         <div className="col-md-1 btn btn-outline-success ">
-                            <NavLink to='/signup' style={{color: 'white'}}  >Signup</NavLink>
+                            <NavLink to='/signup' style={{color: 'white'}} >Signup</NavLink>
                         </div>
 
                     </nav>

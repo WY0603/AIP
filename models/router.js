@@ -77,23 +77,23 @@ router.post('/register', function(req, res){
    
 })
 
-router.get('/resList/:keyword', function(req, res){
-    console.log(req.params.keyword);
+// router.get('/resList/:keyword', function(req, res){
+//     console.log(req.params.keyword);
     
-    Restaurant.find({"r_name":new RegExp(req.params.keyword, 'i')},function (err, result) {
+//     Restaurant.find({"r_name":new RegExp(req.params.keyword, 'i')},function (err, result) {
              
-            if (err) {
-                return res.status(500).json({
-                    err_code: 500,
-                    message: err.message
-                })
-            }
+//             if (err) {
+//                 return res.status(500).json({
+//                     err_code: 500,
+//                     message: err.message
+//                 })
+//             }
             
             
-            res.status(200).json(result)
-    })
-   // res.end(req.params.keyword);
-})
+//             res.status(200).json(result)
+//     })
+//    // res.end(req.params.keyword);
+// })
 
 
 router.get('/resListAll', function(req, res){

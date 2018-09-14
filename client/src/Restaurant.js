@@ -4,6 +4,7 @@ import { Button } from 'reactstrap';
 import './App.css';
 import Header from "./Header";
 
+
 /*
 this component will show list of restaurant
 */
@@ -12,6 +13,7 @@ class Restaurant extends Component {
         super(props);
         this.state = {
             "restaurants": [],
+            "search": '',
         }; 
         fetch('/resListAll',{
             method:'get',
@@ -27,22 +29,13 @@ class Restaurant extends Component {
     }
 
 
-
-
-    render() {
-      
-
-
-    return (
-     <div>
-     <div>
-     <Header />
-     </div>
-     
-
-         {this.state.restaurants.map((restaurant, i) =>{
-        return(
-          <div key={i}>
+filterList(){
+    let updatedList = this.state.restaurants.filter((restaurant)=>{
+      return restaurant.r_name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
+    })
+    let restaurants = updatedList.map((restaurant,index,array)=>{
+      return(
+          <div key={index}>
       <Media>
       <Media left href="#">
         <Media object src={restaurant.r_pic}  style={{height:200,width:200}} alt="Generic placeholder image" />
@@ -60,10 +53,25 @@ class Restaurant extends Component {
     <p>_____________________________________________________________</p>
           </div>
           )
-      })}
+
+    })
+    return restaurants
+  }
 
 
-</div>
+    render() {
+      
+    return (
+     <div>
+     <div>
+     <Header />
+     </div>
+      
+        <input placeholder="Search by restaurant name" style={{height:45,width:300}} onChange={evt => this.setState({"search":evt.target.value})} value={this.state.search} type="text"/>
+        <p>      </p>
+        {this.filterList()}
+         
+     </div>
    )  
  }
 }
