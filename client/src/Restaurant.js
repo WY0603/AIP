@@ -1,41 +1,79 @@
 import React, { Component } from 'react';
+import { Media } from 'reactstrap';
+import { Button } from 'reactstrap';
 import './App.css';
 import Header from "./Header";
+
+
 /*
 this component will show list of restaurant
 */
 class Restaurant extends Component {
-    render() {
-      const restaurants = [
-      {name: 'R1', address: 'Address1', contactNo: '12345'},
-      {name: 'R2', address: 'Address2', contactNo: '23456'}
-      ]
+    constructor(props) {
+        super(props);
+        this.state = {
+            "restaurants": [],
+            "search": '',
+        }; 
+        fetch('/resListAll',{
+            method:'get',
+            headers: {"Content-Type":"application/json"},
+        })
+        .then(response=>response.json())
+        .then(responseJson => {
+        this.setState({
+            "restaurants": responseJson,
+        })
 
-      return (
-
-        <div>
-          <div>
-              <div>
-                  <Header/>
-              </div>
-          </div>
-
-        {restaurants.map((restaurant, i) =>{
-          return (
-             <div key={i}>
-
-              <h1>{restaurant.name}</h1>
-              <p>{restaurant.address}</p>
-              <p>{restaurant.contactNo}</p>
-              <button to="/Resdetails"> More Details </button>
-              <hr />
-             </div>
-            )
-        })}
-
-        </div>
-      );
+        })
     }
+
+
+filterList(){
+    let updatedList = this.state.restaurants.filter((restaurant)=>{
+      return restaurant.r_name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
+    })
+    let restaurants = updatedList.map((restaurant,index,array)=>{
+      return(
+          <div key={index}>
+      <Media>
+      <Media left href="#">
+        <Media object src={restaurant.r_pic}  style={{height:200,width:200}} alt="Generic placeholder image" />
+      </Media>
+      <Media body>
+        <Media heading>
+          {restaurant.r_name}
+        </Media>
+         {restaurant.r_address}
+         <br/>
+         {restaurant.r_number}
+      </Media>
+    </Media>
+    <Button color="success" style={{marginLeft:400}} href="/Resdetails">Details</Button>{' '}
+    <p>_____________________________________________________________</p>
+          </div>
+          )
+
+    })
+    return restaurants
+  }
+
+
+    render() {
+      
+    return (
+     <div>
+     <div>
+     <Header />
+     </div>
+      
+        <input placeholder="Search by restaurant name" style={{height:45,width:300}} onChange={evt => this.setState({"search":evt.target.value})} value={this.state.search} type="text"/>
+        <p>      </p>
+        {this.filterList()}
+         
+     </div>
+   )  
+ }
 }
 
-export default Restaurant;
+export default Restaurant

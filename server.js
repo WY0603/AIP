@@ -11,7 +11,7 @@ var check = require('./models/check');
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
-
+app.use(express.static('public'));
 // database configuration
 // http://mlab.com, account:WBruce, password:obsidian0822.
 var dbUrl = 'mongodb://aip:aip2018@ds241012.mlab.com:41012/aip';

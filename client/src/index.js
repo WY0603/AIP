@@ -18,6 +18,7 @@ import Restaurant from "./Restaurant";
 import Resdetails from "./Resdetails";
 
 
+
 const App = () => (
     <Router>
         <div>
@@ -26,10 +27,12 @@ const App = () => (
             </header> */}
             <Switch>
                 <Route exact path="/" component={Home}/>
-                <Route path="/restaurant" component={Restaurant}/>
+                <Route path='/restaurant' component={Restaurant}/>
                 <Route path="/login" component={Login}/>
                 <Route path="/signup" component={Signup}/>
+
                 <Route path="/Resdetails" component={Resdetails}/>
+
             </Switch>
         </div>
     </Router>

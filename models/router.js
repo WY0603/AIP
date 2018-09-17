@@ -1,5 +1,6 @@
 var express = require('express');
 var User = require('./user');
+var Restaurant = require('./restaurant');
 var check = require('./check');
 var router = express.Router();
 var md5 = require('blueimp-md5')
@@ -48,29 +49,67 @@ router.post('/login', function(req, res){
 
 router.post('/register', function(req, res){
     var user = new User(req.body)
-    console.log(user.password);
+    console.log(req.body);
     user.password = md5(md5(user.password))
     User.find({
         username: user.username
-    }),function (err, user) {
+    },function (err, result) {
+            console.log(56);
             if (err) {
                 return res.status(500).json({
                     err_code: 500,
                     message: err.message
                 })
             }
-            if (user) {
+            if (result.username) {
                 return res.status(200).json({
                     err_code: 1,
                     message: 'Username existed, please change to another username.'
                 })
             }
-    }
+            user.save()
+            res.status(200).json({
+                err_code: 0,
+                message: 'Signup successfully.'
+            })
+    })
     
-    res.redirect('/restaurant')
+   
 })
 
-router.get('/searchList', function(req, res){
+// router.get('/resList/:keyword', function(req, res){
+//     console.log(req.params.keyword);
+    
+//     Restaurant.find({"r_name":new RegExp(req.params.keyword, 'i')},function (err, result) {
+             
+//             if (err) {
+//                 return res.status(500).json({
+//                     err_code: 500,
+//                     message: err.message
+//                 })
+//             }
+            
+            
+//             res.status(200).json(result)
+//     })
+//    // res.end(req.params.keyword);
+// })
+
+
+router.get('/resListAll', function(req, res){
+
+    Restaurant.find(function (err, result) {
+             
+            if (err) {
+                return res.status(500).json({
+                    err_code: 500,
+                    message: err.message
+                })
+            }
+            
+            
+            res.status(200).json(result)
+    })
 
 })
 
