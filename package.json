@@ -11,6 +11,8 @@
   "dependencies": {
     "blueimp-md5": "^2.10.0",
     "express": "^4.16.3",
-    "mongoose": "^5.2.12"
+    "express-session": "^1.15.6",
+    "mongoose": "^5.2.12",
+    "session-file-store": "^1.2.0"
   }
 }
