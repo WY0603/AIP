@@ -25,10 +25,13 @@ export default class Login extends Component {
         })
         .then(response=>response.json())
         .then(responseJson => {
-
+            
+            var name = 'test';
             //在这里 跳转
             if(responseJson.err_code === 0){
-                window.location.href="/restaurant/"+this.state.username.trim();
+                let datadata=encodeURIComponent(name)
+                this.props.history.push(`/restaurant/${datadata}`) 
+                //window.location.href="/restaurant/"+this.state.username.trim();
             }
             else{
                 alert(responseJson.message);

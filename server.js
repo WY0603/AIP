@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 var md5 = require('blueimp-md5');
 var User = require('./models/user');
 var check = require('./models/check');
+var session = require('express-session');
+var FileStore = require('session-file-store');
 
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
@@ -16,7 +18,15 @@ app.use(express.static('public'));
 // http://mlab.com, account:WBruce, password:obsidian0822.
 var dbUrl = 'mongodb://aip:aip2018@ds241012.mlab.com:41012/aip';
 
-
+app.use(session({
+  name: identityKey,
+  secret: 'chyingp',
+  saveUninitialized: false,
+  resave:false,
+  cookie:{
+    maxAge:10*1000
+  }
+}))
 
 mongoose.connect(dbUrl, {useNewUrlParser : true}, (err) => {
 
