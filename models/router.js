@@ -33,9 +33,12 @@ router.post('/login', function(req, res){
                     message: 'Username or password is invalid.'
                 })
             }
-            res.status(200).json({
-                err_code: 0,
-                message: 'login success'
+            req.session.regenerate(function(err){
+                req.session.userInfo = '123';
+                res.status(200).json({
+                    err_code: 0,
+                    message: 'login success'
+                })
             })
 
 

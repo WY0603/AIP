@@ -36,7 +36,7 @@ filterList(){
     })
     let restaurants = updatedList.map((restaurant,index,array)=>{
       return(
-          <div key={index}>
+          <div key={index} style={{width:'49%',float:'left'}}>
       <Media>
       <Media left href="#">
         <Media object src={restaurant.r_pic}  style={{height:200,width:200}} alt="Generic placeholder image" />
