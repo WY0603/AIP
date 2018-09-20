@@ -56,7 +56,7 @@ router.post('/register', function(req, res){
     console.log(req.body);
     user.password = md5(md5(user.password))
     User.find({
-        username: user.username
+        username: user.userName
     },function (err, result) {
            
             if (err) {
@@ -70,12 +70,13 @@ router.post('/register', function(req, res){
                     err_code: 1,
                     message: 'Username existed, please change to another username.'
                 })
-            }
+            }else{
             user.save()
             res.status(200).json({
                 err_code: 0,
                 message: 'Signup successfully.'
             })
+        }
     })
     
    

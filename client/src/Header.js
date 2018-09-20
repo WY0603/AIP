@@ -6,15 +6,49 @@ class Header extends React.Component{
     
     constructor(props){
         super(props);
-        this.state = {
+        // this.state = {
+        //     "isLoggedin": false,
+        //     "username": ""
+        // }
+        console.log(localStorage.username);
+        if (localStorage.username != null && localStorage.username.length > 0 ){
+            console.log(localStorage.username);
+            this.state = {
+                "isLoggedin": true,
+                "username": localStorage.username
 
-            "username": "Welcome! "+localStorage.username.toUpperCase(),
+            }
+           console.log(this.state.isLoggedin);
+        }else{
+            this.state = {
+                "isLoggedin": false,
+                "username": ""
+            
+            }
         }
     }
-
+    handleLogout(){
+       localStorage.username = "";
+       window.location.href="/";
+    }  
 
     render() {
+        const isLoggedin = this.state.isLoggedin;
+        let button;
+        console.log(isLoggedin);
+         if (isLoggedin){
+                        button = 
+                        <div>
+                            <button className="btn btn-outline-success" style={{color: 'white'}} onClick = {this.handleLogout.bind(this)}>Logout </button>
 
+                        </div>;
+                        }else{
+                        button = 
+                        <div className="col-md-1 btn btn-outline-success" >
+                            <NavLink to='/login' style={{color: 'white'}} >Login</NavLink>
+                        </div>;
+                       }
+                   
         return (
             <div>
                 <header style={{height: 90}}>
@@ -25,10 +59,10 @@ class Header extends React.Component{
                         <div className="col-md-2" >
                             <NavLink to='/restaurant' style={{color: 'white'}} >Restaurant</NavLink>
                         </div>
-                        <div style={{color: 'white'}}>{this.state.username}</div>
-                        <div className="col-md-1 btn btn-outline-success" >
-                            <NavLink to='/login' style={{color: 'white'}} >Login</NavLink>
-                        </div>
+                        <div style={{color: 'white'}}>Welcome! {this.state.username}</div>
+
+                         {button}
+
                         <div className="col-md-1 btn btn-outline-success ">
                             <NavLink to='/signup' style={{color: 'white'}} >Signup</NavLink>
                         </div>
