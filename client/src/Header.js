@@ -6,10 +6,19 @@ class Header extends React.Component{
     
     constructor(props){
         super(props);
-        console.log(props.username);
+        this.state = {
+            "username": localStorage.username,
+        }
     }
+       switchStatus(){
+        if (this.state.username){
+            return (<div> </div>);
+        }
+       }
+
 
     render() {
+
         return (
             <div>
                 <header style={{height: 90}}>

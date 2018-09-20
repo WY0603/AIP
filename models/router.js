@@ -1,6 +1,7 @@
 var express = require('express');
 var User = require('./user');
 var Restaurant = require('./restaurant');
+var Reservation = require('./reservation');
 var check = require('./check');
 var router = express.Router();
 var md5 = require('blueimp-md5')
@@ -77,23 +78,6 @@ router.post('/register', function(req, res){
    
 })
 
-// router.get('/resList/:keyword', function(req, res){
-//     console.log(req.params.keyword);
-    
-//     Restaurant.find({"r_name":new RegExp(req.params.keyword, 'i')},function (err, result) {
-             
-//             if (err) {
-//                 return res.status(500).json({
-//                     err_code: 500,
-//                     message: err.message
-//                 })
-//             }
-            
-            
-//             res.status(200).json(result)
-//     })
-//    // res.end(req.params.keyword);
-// })
 
 
 router.get('/resListAll', function(req, res){
@@ -112,6 +96,60 @@ router.get('/resListAll', function(req, res){
     })
 
 })
+
+
+router.get('/resDetails/:id', function(req, res){
+    
+    Restaurant.find({_id: req.params.id},function (err, result) {
+             
+            if (err) {
+                return res.status(500).json({
+                    err_code: 500,
+                    message: err.message
+                })
+            }
+            
+            res.status(200).json(result)
+    })
+
+})
+
+router.post('/reservation', function(req, res){
+    var reserv = new Reservation(req.body)
+   
+    Reservation.find({
+        r_id: reserv.r_id,
+        time: reserv.time,
+        date: reserv.date
+    },function (err, result) {
+            console.log(result);
+            if (err) {
+                return res.status(500).json({
+                    err_code: 500,
+                    message: err.message
+                })
+            }
+         Restaurant.find({_id: reserv.r_id
+         }, function (err, res_result) {
+            if (res_result[0].r_maxtable > result.length){
+                   reserv.save(); 
+                   res.status(200).json({
+                   err_code: 0,
+                    
+                })
+            }else{
+                 res.status(500).json({
+                    err_code: 1,
+                    message: 'Sorry, reservation at this time is full.'
+                })
+            }
+         })   
+           
+    })
+    
+   
+})
+
 
 module.exports = router;
 

@@ -11,7 +11,8 @@ var restSchema = new Schema({
   r_address: String,
   r_number: String,
   r_menu: [String],
-  r_pic: String
+  r_pic: String,
+  r_maxtable: String
 })
 
 module.exports = mongoose.model('Restaurant', restSchema,"res_tab")
