@@ -7,6 +7,7 @@ constructor(props) {
         super(props);
 
         this.state = {
+            "resname": "",
             "r_id" : this.props.match.params.rid,
             "email": "",
             "time": "10:00",
@@ -15,6 +16,19 @@ constructor(props) {
         };
 
     }
+    // fetch('/resName/'+this.props.match.params.rid,{
+    //         method:'get',
+    //         headers: {"Content-Type":"application/json"},
+    //     })
+    //     .then(response=>response.json())
+    //     .then(responseJson => {
+    //          console.log(responseJson)
+    //          this.setState({
+    //         "resname": responseJson[0].r_name,
+    //     })
+
+    //     })
+
 handleSubmit(){
 fetch('/reservation',{
             method:'post',
@@ -42,7 +56,7 @@ render(){
    	 <Header/>
    	
    	  <div>
-      <h1 style={{marginLeft:150}}> Restaurant </h1>
+      <h1 style={{marginLeft:150}}> {this.setState.resname} </h1>
       <Form style={{marginLeft:150}}>
         <FormGroup>
           <Label for="exampleSelect">Number of Customers</Label>

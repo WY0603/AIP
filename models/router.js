@@ -33,8 +33,8 @@ router.post('/login', function(req, res){
                     message: 'Username or password is invalid.'
                 })
             }
-            req.session.regenerate(function(err){
-                req.session.userInfo = '123';
+            // req.session.regenerate(function(err){
+                // req.session.userInfo = '123';
                 res.status(200).json({
                     err_code: 0,
                     message: 'login success'
@@ -42,7 +42,7 @@ router.post('/login', function(req, res){
             })
 
 
-        })
+        // })
     }else{
         res.send('error');
     }
@@ -58,7 +58,7 @@ router.post('/register', function(req, res){
     User.find({
         username: user.username
     },function (err, result) {
-            console.log(56);
+           
             if (err) {
                 return res.status(500).json({
                     err_code: 500,
@@ -116,6 +116,22 @@ router.get('/resDetails/:id', function(req, res){
     })
 
 })
+
+// router.get('/resName/:rid', function(req, res){
+    
+//     Restaurant.find({_id: req.params.rid},function (err, result) {
+//              console.log(req.params.rid);
+//             if (err) {
+//                 return res.status(500).json({
+//                     err_code: 500,
+//                     message: err.message
+//                 })
+//             }
+            
+//             res.status(200).json(result)
+//     })
+
+// })
 
 router.post('/reservation', function(req, res){
     var reserv = new Reservation(req.body)

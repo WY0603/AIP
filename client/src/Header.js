@@ -7,14 +7,10 @@ class Header extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            "username": localStorage.username,
+
+            "username": "Welcome! "+localStorage.username.toUpperCase(),
         }
     }
-       switchStatus(){
-        if (this.state.username){
-            return (<div> </div>);
-        }
-       }
 
 
     render() {
@@ -29,7 +25,7 @@ class Header extends React.Component{
                         <div className="col-md-2" >
                             <NavLink to='/restaurant' style={{color: 'white'}} >Restaurant</NavLink>
                         </div>
-                        
+                        <div style={{color: 'white'}}>{this.state.username}</div>
                         <div className="col-md-1 btn btn-outline-success" >
                             <NavLink to='/login' style={{color: 'white'}} >Login</NavLink>
                         </div>

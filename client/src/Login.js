@@ -26,25 +26,16 @@ export default class Login extends Component {
         .then(response=>response.json())
         .then(responseJson => {
 
-
           
             if(responseJson.err_code === 0){
                  localStorage.setItem("username", this.state.username.trim());
                 window.location.href="/restaurant";
-
-            
-            var name = 'test';
-            //在这里 跳转
-            if(responseJson.err_code === 0){
-                let datadata=encodeURIComponent(name)
-                this.props.history.push(`/restaurant/${datadata}`) 
-
             }
             else{
                 alert(responseJson.message);
             }
 
-        }.catch(function(e){
+        }).catch(function(e){
             console.log('Oops,error');
         })
      }

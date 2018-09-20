@@ -7,6 +7,7 @@ var Schema = mongoose.Schema
 
 var reservSchema = new Schema({
 
+  resname: String,
   r_id: String,
   u_id: String,
   time: String,
