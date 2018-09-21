@@ -18,15 +18,15 @@ app.use(express.static('public'));
 // http://mlab.com, account:WBruce, password:obsidian0822.
 var dbUrl = 'mongodb://aip:aip2018@ds241012.mlab.com:41012/aip';
 
-app.use(session({
-  name: identityKey,
-  secret: 'chyingp',
-  saveUninitialized: false,
-  resave:false,
-  cookie:{
-    maxAge:10*1000
-  }
-}))
+// app.use(session({
+//   name: identityKey,
+//   secret: 'chyingp',
+//   saveUninitialized: false,
+//   resave:false,
+//   cookie:{
+//     maxAge:10*1000
+//   }
+// }))
 
 mongoose.connect(dbUrl, {useNewUrlParser : true}, (err) => {
 

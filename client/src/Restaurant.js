@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Media } from 'reactstrap';
 import { Button } from 'reactstrap';
-import './App.css';
 import Header from "./Header";
+// import {Link} from 'react-router-dom';
 
 
 /*
@@ -11,6 +11,7 @@ this component will show list of restaurant
 class Restaurant extends Component {
     constructor(props) {
         super(props);
+        console.log(localStorage);
         this.state = {
             "restaurants": [],
             "search": '',
@@ -35,7 +36,8 @@ filterList(){
     })
     let restaurants = updatedList.map((restaurant,index,array)=>{
       return(
-          <div key={index} style={{width:'49%',float:'left'}}>
+          //<div key={index} style={{width:'49%',float:'left'}}>
+      <div key={index}>
       <Media>
       <Media left href="#">
         <Media object src={restaurant.r_pic}  style={{height:200,width:200}} alt="Generic placeholder image" />
@@ -49,7 +51,9 @@ filterList(){
          {restaurant.r_number}
       </Media>
     </Media>
-    <Button color="success" style={{marginLeft:400}} href="/Resdetails">Details</Button>{' '}
+    <Button color="success" style={{marginLeft:400}} href={"/Resdetails/"+restaurant._id}>Details</Button>{' '}
+    
+    
     <p>_____________________________________________________________</p>
           </div>
           )

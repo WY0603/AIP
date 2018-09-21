@@ -6,7 +6,7 @@ export default class Signup extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            "username": "",
+            "userName": "",
             "email": "",
             "password":"" 
         };
@@ -16,7 +16,7 @@ export default class Signup extends Component {
         var emailReg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
         if (this.state.email.trim().length == 0 
             || this.state.password.trim().length == 0
-            || this.state.username.trim().length == 0 ){
+            || this.state.userName.trim().length == 0 ){
             alert ("* area must not be empty.");
             return false; 
         }else if (!emailReg.test(this.state.email)) {
@@ -33,11 +33,12 @@ export default class Signup extends Component {
         .then(responseJson => {
 
 
-            //在这里 跳转
+            
             if(responseJson.err_code === 0){
+                localStorage.setItem("username", this.state.userName.trim());
                 window.location.href="/restaurant";
             }
-            else{
+            else if (responseJson.err_code === 1){
                 alert(responseJson.message);
             }
 
@@ -68,8 +69,8 @@ export default class Signup extends Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="nickname">Username: <span style={{color:"red"}}>* </span> </label>
-                            <input type="text" className="form-control" id="username" name="username"
-                                   placeholder="Please enter a username" onChange={evt => this.setState({"username":evt.target.value})}/>
+                            <input type="text" className="form-control" id="username" name="userName"
+                                   placeholder="Please enter a username" onChange={evt => this.setState({"userName":evt.target.value})}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="password">Password: <span style={{color:"red"}}>* </span> </label>
