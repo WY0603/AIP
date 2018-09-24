@@ -31,6 +31,9 @@ class Resdetails extends Component {
     }
 
 
+    
+
+
   render() {
      
     return (
@@ -51,6 +54,7 @@ class Resdetails extends Component {
           Tel: {this.state.resDetails.r_number}
           <br/>
           Menu: {this.state.resDetails.r_menu}
+          
       </Media>
     </Media>
     <br/>

@@ -112,7 +112,7 @@ render(){
         </FormGroup>
 
         <FormGroup>
-          <Label for="exampleEmail">Email:<span style={{color:"red"}}>* </span></Label>
+          <Label for="exampleEmail">Email:<span style={{color:"red"}}> * </span></Label>
           <Input type="email" name="email" id="exampleEmail" placeholder="Email" style={{height:30,width:200}}
            value={this.state.email} onChange={evt => this.setState({"email":evt.target.value})}/>   
           <p style={{color:'red'}}>* Confirmation message will be sent to this email address. </p>
