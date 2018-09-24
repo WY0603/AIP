@@ -46,9 +46,9 @@ filterList(){
         <Media heading>
           {restaurant.r_name}
         </Media>
-         {restaurant.r_address}
+         Address: {restaurant.r_address}
          <br/>
-         {restaurant.r_number}
+         Contact Number: {restaurant.r_number}
       </Media>
     </Media>
     <Button color="success" style={{marginLeft:400}} href={"/Resdetails/"+restaurant._id}>Details</Button>{' '}
