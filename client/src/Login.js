@@ -13,7 +13,7 @@ export default class Login extends Component {
 
     handleSubmit(){
        
-        if (this.state.username.trim().length == 0 || this.state.password.trim().length == 0){
+        if (this.state.username.trim().length === 0 || this.state.password.trim().length === 0){
             alert ("Please make sure * area is not empty. "); 
             
         } else{

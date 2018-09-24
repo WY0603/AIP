@@ -14,9 +14,9 @@ export default class Signup extends Component {
 
     handleSubmit(){
         var emailReg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-        if (this.state.email.trim().length == 0 
-            || this.state.password.trim().length == 0
-            || this.state.userName.trim().length == 0 ){
+        if (this.state.email.trim().length === 0
+            || this.state.password.trim().length === 0
+            || this.state.userName.trim().length === 0 ){
             alert ("* area must not be empty.");
             return false; 
         }else if (!emailReg.test(this.state.email)) {
