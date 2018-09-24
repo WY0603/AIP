@@ -14,7 +14,7 @@
   },
   "scripts": {
     "react-start": "react-scripts start",
-    "express-start": "cd ..",
+    "express-start": "cd .. && node server.js",
     "start": "concurrently \"npm run react-start\" \"npm run express-start\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
