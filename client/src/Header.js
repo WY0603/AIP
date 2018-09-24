@@ -59,6 +59,7 @@ class Header extends React.Component{
                         <div className="col-md-2" >
                             <NavLink to='/restaurant' style={{color: 'white'}} >Restaurant</NavLink>
                         </div>
+                        <div className="col-md" ></div>
                         <div style={{color: 'white'}}>Welcome! {this.state.username}</div>
 
                          {button}
