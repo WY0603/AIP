@@ -2,11 +2,11 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
 var mongoose = require('mongoose');
-var router = require('./models/router');
+var router = require('../AIP/models/router');
 var bodyParser = require('body-parser');
 var md5 = require('blueimp-md5');
-var User = require('./models/user');
-var check = require('./models/check');
+var User = require('models/user');
+var check = require('models/check');
 var session = require('express-session');
 var FileStore = require('session-file-store');
 
@@ -34,9 +34,6 @@ mongoose.connect(dbUrl, {useNewUrlParser : true}, (err) => {
 
 });
 
-app.post('/test', function(req, res){
-  res.send('hello world');
-});
 
 app.use(router);
 // console.log that your server is up and running
