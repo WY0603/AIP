@@ -48,7 +48,7 @@ fetch('/reservation',{
          
           
             if(responseJson.err_code === 0){
-                window.location.href="/Comfirmation";
+                window.location.href="/Confirmation";
             }
             else if(responseJson.err_code === 1){
                 alert(responseJson.message);
