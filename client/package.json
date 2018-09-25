@@ -13,9 +13,7 @@
     "reactstrap": "^6.4.0"
   },
   "scripts": {
-    "react-start": "react-scripts start",
-    "express-start": "cd .. && node server.js",
-    "start": "concurrently \"npm run react-start\" \"npm run express-start\"",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
