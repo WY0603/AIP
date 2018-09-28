@@ -157,7 +157,7 @@ router.post('/reservation', function(req, res){
                 reserv.resname = res_result[0].r_name;
                 //console.log(reserv.resname);
                 mailer.sendMailer(reserv);
-                  // reserv.save();
+                   reserv.save();
                    res.status(200).json({
                    err_code: 0,
                     
