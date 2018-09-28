@@ -52,7 +52,7 @@
   "scripts": {
     "dev": "webpack-dev-server --disableHostCheck=true",
     "react-start": "node scripts/start.js",
-    "express-start": "cd ../server && node server.js",  
+    "express-start": "cd ../server && node server.js",
     "start": "concurrently \"npm run react-start\" \"npm run express-start\"",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"

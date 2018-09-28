@@ -12,7 +12,7 @@ render(){
     <div>
     <Header />
     <div>
-     <p>confirmed</p>
+     <p>confirmed, please check your email</p>
     </div>
     </div>
 
