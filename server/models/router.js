@@ -5,6 +5,7 @@ var Reservation = require('./reservation');
 var check = require('./check');
 var router = express.Router();
 var md5 = require('blueimp-md5')
+var mailer = require('./mailer')
 
 router.post('/', function(req, res){
 
@@ -136,13 +137,13 @@ router.get('/resDetails/:id', function(req, res){
 
 router.post('/reservation', function(req, res){
     var reserv = new Reservation(req.body)
-   
+    //console.log(reserv);
     Reservation.find({
         r_id: reserv.r_id,
         time: reserv.time,
         date: reserv.date
     },function (err, result) {
-            console.log(result);
+            //console.log(result);
             if (err) {
                 return res.status(500).json({
                     err_code: 500,
@@ -152,7 +153,11 @@ router.post('/reservation', function(req, res){
          Restaurant.find({_id: reserv.r_id
          }, function (err, res_result) {
             if (res_result[0].r_maxtable > result.length){
-                   reserv.save(); 
+                //console.log(res_result[0].r_name);
+                reserv.resname = res_result[0].r_name;
+                //console.log(reserv.resname);
+                mailer.sendMailer(reserv);
+                  // reserv.save();
                    res.status(200).json({
                    err_code: 0,
                     

@@ -35,7 +35,7 @@ const App = () => (
                 <Route path="/signup" component={Signup}/>
                 <Route path="/Resdetails/:id" component={Resdetails}/>
                 <Route path="/Reservation/:rid" component={Reservation}/>
-                <Route path="/Confirmation" component={Confirmation}/>
+                <Route path="/Confirmation/:reservid" component={Confirmation}/>
  
             </Switch>
         </div>
