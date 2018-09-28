@@ -12,7 +12,11 @@ render(){
     <div>
     <Header />
     <div>
-     <p>confirmed, please check your email</p>
+
+     <h2>Thank you for your reservation!</h2>
+     <p> An email will be sent to your email address.</p>
+
+
     </div>
     </div>
 

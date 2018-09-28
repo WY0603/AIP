@@ -13,13 +13,19 @@ module.exports = {
                 pass : 'mrsvgkwwrsxapvjk'
             },
         })
+        
+        var mail = "<b>Hello customer, <br />" + 
+            "You have successful made a reservation for " + Reservation.cusno + " people in " + Reservation.resname + " at " + Reservation.time + " on " + Reservation.date + ".<br />"+
+            "Regards,<br />" +
+            "EasyDinning </b>" ;
 
         var mailOptions = {
             from: 'danieljing1993@gmail.com', // sender address
             to: Reservation.email, // list of receivers
-            subject: 'EasyDinning reservation confirmation ✔', // Subject line
+            subject: 'EasyDinning Reservation Confirmation ✔', // Subject line
             text: 'Hello world ✔', // plaintext body
-            html: '<b>Hello customer, you have successful made a reservation in '+Reservation.resname+', the reservation time is '+Reservation.time+', '+Reservation.cusno+' people ✔</b>' // html body
+            html: mail 
+
         };
 
         mailTransport.sendMail(mailOptions,function (error,info) {
