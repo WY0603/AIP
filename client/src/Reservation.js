@@ -14,7 +14,7 @@ constructor(props) {
             "date": setDate(),
             "cusno": "1",
         };
-
+     
     }
     // fetch('/resName/'+this.props.match.params.rid,{
     //         method:'get',
@@ -29,15 +29,31 @@ constructor(props) {
 
     //     })
 
+
+handleDate(){
+  var handleDate = [this.state.date.split("-")];
+  var date = new Date();
+  if (handleDate[1]< (date.getMonth()+1) ){
+    
+    return false;
+  } else if(handleDate[2]< date.getDate()){
+    
+    return false;
+  }
+  return true;
+}
+  
 handleSubmit(){
 var emailReg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+
 if (this.state.email.trim().length == 0 &&
     this.state.date !== null){
   alert ("* area must be filled.")
 }else if (!emailReg.test(this.state.email)) {
             alert ("Pleaze enter a valid email address.");
             return false;
-        }else{
+        }  else{
 fetch('/reservation',{
             method:'post',
             body: JSON.stringify(this.state),
@@ -45,8 +61,7 @@ fetch('/reservation',{
         })
         .then(response=>response.json())
         .then(responseJson => {
-         
-          
+             
             if(responseJson.err_code === 0){
                 window.location.href="/Confirmation";
             }
@@ -66,6 +81,7 @@ render(){
    	
    	  <div>
       <h1 style={{marginLeft:150}}> {this.setState.resname} </h1>
+    
       <Form style={{marginLeft:150}}>
         <FormGroup>
           <Label for="exampleSelect">Number of Customers: <span style={{color:"red"}}>* </span> </Label> 
