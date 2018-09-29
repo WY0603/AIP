@@ -4,6 +4,7 @@ import Header from "./Header";
 export default class Login extends Component {
     constructor(props) {
         super(props);
+        // set state to empty at the begining 
         this.state = {
             "username": "",
             "password": ""
@@ -12,12 +13,12 @@ export default class Login extends Component {
 
 
     handleSubmit(){
-       
+        // veridate not empty string 
         if (this.state.username.trim().length === 0 || this.state.password.trim().length === 0){
             alert ("Please make sure * area is not empty. "); 
             
         } else{
-
+        // post request to server side 
         fetch('/login',{
             method:'post',
             body: JSON.stringify(this.state),
@@ -28,6 +29,7 @@ export default class Login extends Component {
 
           
             if(responseJson.err_code === 0){
+                // after log in successfully, set username to local storage
                  localStorage.setItem("username", this.state.username.trim());
                 window.location.href="/restaurant";
             }
@@ -58,13 +60,15 @@ export default class Login extends Component {
                         <div className="form-group">
                             <label htmlFor="">Username: <span style={{color:"red"}}>* </span></label>
                             <input type="username" className="form-control" id="username" name="username" placeholder="Please enter your username"
-                              value={this.state.username} onChange={evt => this.setState({"username":evt.target.value})}autoFocus/>
+                              value={this.state.username} onChange={evt => this.setState({"username":evt.target.value})}autoFocus/> 
+                              //update state of username when input happens  
                         </div>
                         <div className="form-group">
                             <label htmlFor="">Password: <span style={{color:"red"}}>* </span></label>
 
                             <input type="password" className="form-control" id="password" name="password" placeholder="Please enter your password"
                             value={this.state.password} onChange={evt => this.setState({"password":evt.target.value})}/>
+                            //update state of password when input happens
                         </div>
                         <div className="checkbox">
                             <label>

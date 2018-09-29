@@ -8,13 +8,13 @@ constructor(props) {
        
         this.state = {
             "resname": "",
-            "r_id" : this.props.match.params.rid,
+            "r_id" : this.props.match.params.rid,  // get the parameter of the selected restaurant and set to state 
             "email": "",
-            "time": "10:00",
-            "date": setDate(),
-            "cusno": "1",
+            "time": "10:00", // set default time to the earliest reservation time
+            "date": setDate(), //set default date to current date 
+            "cusno": "1", // set default customer number to the least number 
         };
-     
+    
     }
     // fetch('/resName/'+this.props.match.params.rid,{
     //         method:'get',
@@ -30,30 +30,33 @@ constructor(props) {
     //     })
 
 
-handleDate(){
-  var handleDate = [this.state.date.split("-")];
-  var date = new Date();
-  if (handleDate[1]< (date.getMonth()+1) ){
+// handleDate(){
+//   var handleDate = [this.state.date.split("-")];
+//   var date = new Date();
+//   if (handleDate[1]< (date.getMonth()+1) ){
     
-    return false;
-  } else if(handleDate[2]< date.getDate()){
+//     return false;
+//   } else if(handleDate[2]< date.getDate()){
     
-    return false;
-  }
-  return true;
-}
+//     return false;
+//   }
+//   return true;
+// }
   
 handleSubmit(){
+// set email format
 var emailReg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
-
+// validate not empty input 
 if (this.state.email.trim().length == 0 &&
     this.state.date !== null){
-  alert ("* area must be filled.")
+  alert ("* area must be filled.");
+// email validation 
 }else if (!emailReg.test(this.state.email)) {
             alert ("Pleaze enter a valid email address.");
             return false;
         }  else{
+// POST request to server side to save reservation details
 fetch('/reservation',{
             method:'post',
             body: JSON.stringify(this.state),
@@ -144,7 +147,7 @@ render(){
 
 }
 
-
+// this function defind the format of date 
 function setDate(){
 
 var date = new Date();

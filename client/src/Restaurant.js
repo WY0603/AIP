@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Media } from 'reactstrap';
 import { Button } from 'reactstrap';
 import Header from "./Header";
-// import {Link} from 'react-router-dom';
+
 
 
 /*
@@ -16,12 +16,14 @@ class Restaurant extends Component {
             "restaurants": [],
             "search": '',
         }; 
+        // get request to server side to get the list of restaurant 
         fetch('/resListAll',{
             method:'get',
             headers: {"Content-Type":"application/json"},
         })
         .then(response=>response.json())
         .then(responseJson => {
+        //update state with the list of restaurant
         this.setState({
             "restaurants": responseJson,
         })
@@ -29,14 +31,15 @@ class Restaurant extends Component {
         })
     }
 
-
+ //this function is used to filter the searched restaurant by the restaurant name 
 filterList(){
+    // match the input name with the name in the restaurant list 
     let updatedList = this.state.restaurants.filter((restaurant)=>{
       return restaurant.r_name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
     })
     let restaurants = updatedList.map((restaurant,index,array)=>{
       return(
-          //<div key={index} style={{width:'49%',float:'left'}}>
+          
       <div key={index}>
       <Media>
       <Media left href="#">
@@ -50,7 +53,8 @@ filterList(){
          <br/>
          Contact Number: {restaurant.r_number}
       </Media>
-    </Media>
+    </Media> 
+    // when Details button is clicked, pass the restaurant id to the Detail page.
     <Button color="success" style={{marginLeft:400}} href={"/Resdetails/"+restaurant._id}>Details</Button>{' '}
     
     
