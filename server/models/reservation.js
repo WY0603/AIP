@@ -1,10 +1,10 @@
 var mongoose = require('mongoose');
 
-// 连接数据库
+// connect database
 //mongoose.connect('mongodb://localhost/test', { useMongoClient: true })
 
 var Schema = mongoose.Schema
-
+// set reservation schema
 var reservSchema = new Schema({
 
   resname: String,
