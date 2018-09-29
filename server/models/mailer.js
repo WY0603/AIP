@@ -7,13 +7,13 @@ module.exports = {
 
         var mailTransport = nodemailer.createTransport({
             host :'smtp.gmail.com',
-            secureConnection: true, // use SSL（secure pattern，防止被窃取信息）
+            secureConnection: true, // use SSL（secure pattern，prevent data theft）
             auth : {
                 user : 'danieljing1993@gmail.com',
                 pass : 'mrsvgkwwrsxapvjk'
             },
         })
-        
+        // set the content of email 
         var mail = "<b>Hello customer, <br />" + 
             "You have successful made a reservation for " + Reservation.cusno + " people in " + Reservation.resname + " at " + Reservation.time + " on " + Reservation.date + ".<br />"+
             "Regards,<br />" +
