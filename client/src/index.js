@@ -22,7 +22,7 @@ import Reservation from "./Reservation";
 import Confirmation from "./Confirmation";
 
 
-
+// Page-routing setting 
 const App = () => (
     <Router>
         <div>
