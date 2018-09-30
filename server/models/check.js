@@ -1,4 +1,4 @@
-// vailid input value include '$'
+// validate input value including '$'
 module.exports = {
     checkInject : function(obj){
 
@@ -11,7 +11,7 @@ module.exports = {
             };
         }
 
-        console.log('vailid successfull');
+        console.log('validate successfull');
         return true;
     }
 }

@@ -1,10 +1,10 @@
 var mongoose = require('mongoose');
 
-// 连接数据库
+// connect database
 //mongoose.connect('mongodb://localhost/test', { useMongoClient: true })
 
 var Schema = mongoose.Schema
-
+// set restaurant schema
 var restSchema = new Schema({
   _id: mongoose.Schema.Types.ObjectId,
   r_name: String,

@@ -6,14 +6,13 @@ class Header extends React.Component{
     
     constructor(props){
         super(props);
-        // this.state = {
-        //     "isLoggedin": false,
-        //     "username": ""
-        // }
         console.log(localStorage.username);
+        // get the value of username from local storage
+        // examine whether username has existed and user has logged in 
         if (localStorage.username != null && localStorage.username.length > 0 ){
             console.log(localStorage.username);
             this.state = {
+                // if user has loggin in, set username to State
                 "isLoggedin": true,
                 "username": localStorage.username
 
@@ -21,12 +20,14 @@ class Header extends React.Component{
            console.log(this.state.isLoggedin);
         }else{
             this.state = {
+                //if user has not logged in, set username to empty
                 "isLoggedin": false,
                 "username": ""
             
             }
         }
     }
+    //this function is used to empty username and get back to Home page when user has logged out. 
     handleLogout(){
        localStorage.username = "";
        window.location.href="/";
@@ -36,6 +37,7 @@ class Header extends React.Component{
         const isLoggedin = this.state.isLoggedin;
         let button;
         console.log(isLoggedin);
+        // handle the login and logout button switch according the state of isLoggedin. 
          if (isLoggedin){
                         button = 
                         <div>

@@ -5,7 +5,7 @@ import { Button } from 'reactstrap';
 import Header from "./Header";
 
 /*
-this component will show detail of restaurant which customer click it in list
+this component will show details of the selected restaurant 
 */
 
 class Resdetails extends Component {
@@ -15,6 +15,7 @@ class Resdetails extends Component {
         this.state = {
             "resDetails": '',
         }; 
+        // GET request to server side to get restaurant details with the id parameter passed from Restaurant page.
         fetch('/resDetails/'+this.props.match.params.id,{
             method:'get',
             headers: {"Content-Type":"application/json"},
@@ -30,8 +31,6 @@ class Resdetails extends Component {
         
     }
 
-
-    
 
 
   render() {
@@ -58,7 +57,8 @@ class Resdetails extends Component {
       </Media>
     </Media>
     <br/>
-          <Button color="success" style={{marginLeft:400}} href={"/Reservation/"+this.state.resDetails._id}>Book</Button>{' '}
+     // pass the restaurant id to the Reservation page.
+    <Button color="success" style={{marginLeft:400}} href={"/Reservation/"+this.state.resDetails._id}>Book</Button>{' '}
       
       </div>
     );

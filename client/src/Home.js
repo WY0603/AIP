@@ -4,7 +4,7 @@ import { Jumbotron, Container } from 'reactstrap';
 import Header from "./Header";
 
 /*
-
+this component demonstrates introduction of this app in Home page. 
 */
 const Home = (props) => {
     return (

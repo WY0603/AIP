@@ -1,10 +1,10 @@
 var mongoose = require('mongoose');
 
-// 连接数据库
+// connect database
 //mongoose.connect('mongodb://localhost/test', { useMongoClient: true })
 
 var Schema = mongoose.Schema
-
+// set user schema
 var userSchema = new Schema({
   email: {
     type: String,
@@ -28,9 +28,7 @@ var userSchema = new Schema({
   },
   status: {
     type: Number,
-    // 0 没有权限限制
-    // 1 不可以评论
-    // 2 不可以登录
+
     enum: [0, 1, 2],
     default: 0
   }
