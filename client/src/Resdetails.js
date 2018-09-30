@@ -57,7 +57,7 @@ class Resdetails extends Component {
       </Media>
     </Media>
     <br/>
-     // pass the restaurant id to the Reservation page.
+     {/*// pass the restaurant id to the Reservation page.*/}
     <Button color="success" style={{marginLeft:400}} href={"/Reservation/"+this.state.resDetails._id}>Book</Button>{' '}
       
       </div>

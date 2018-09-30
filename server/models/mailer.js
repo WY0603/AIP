@@ -9,8 +9,8 @@ module.exports = {
             host :'smtp.gmail.com',
             secureConnection: true, // use SSL（secure pattern，prevent data theft）
             auth : {
-                user : 'danieljing1993@gmail.com',
-                pass : 'mrsvgkwwrsxapvjk'
+                user : 'aipeasydinning@gmail.com',
+                pass : 'levozcwqjwowpten'
             },
         })
         // set the content of email 
@@ -20,7 +20,7 @@ module.exports = {
             "EasyDinning </b>" ;
 
         var mailOptions = {
-            from: 'danieljing1993@gmail.com', // sender address
+            from: 'aipeasydinning@gmail.com', // sender address
             to: Reservation.email, // list of receivers
             subject: 'EasyDinning Reservation Confirmation ✔', // Subject line
             text: 'Hello world ✔', // plaintext body
