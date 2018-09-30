@@ -7,7 +7,7 @@ export default class Signup extends Component {
         super(props);
         // set state to empty at the begining 
         this.state = {
-            "userName": "",
+            "username": "",
             "email": "",
             "password":"" 
         };
@@ -20,7 +20,7 @@ export default class Signup extends Component {
         // check whether email,username,password is empty
         if (this.state.email.trim().length === 0
             || this.state.password.trim().length === 0
-            || this.state.userName.trim().length === 0 ){
+            || this.state.username.trim().length === 0 ){
             alert ("* area must not be empty.");
             return false; 
          // email validation  
@@ -40,7 +40,7 @@ export default class Signup extends Component {
             
             if(responseJson.err_code === 0){
                 // store username to local storage 
-                localStorage.setItem("username", this.state.userName.trim());
+                localStorage.setItem("username", this.state.username.trim());
                 window.location.href="/restaurant";
             }
             else if (responseJson.err_code === 1){
@@ -66,28 +66,29 @@ export default class Signup extends Component {
 
                         <h1>Sign Up</h1>
                     </div>
-
+                    <form id="signup_form">
                         <div className="form-group">
                             <label htmlFor="email">Email: <span style={{color:"red"}}>* </span> </label>
 
                             <input type="email" className="form-control" id="email" name="email" placeholder="Please enter an email"
-                                   onChange={evt => this.setState({"email":evt.target.value})} /> //set the changes of email to state
+                                   onChange={evt => this.setState({"email":evt.target.value})} />
+                            {/*//set the changes of email to state*/}
                         </div>
                         <div className="form-group">
                             <label htmlFor="nickname">Username: <span style={{color:"red"}}>* </span> </label>
-                            <input type="text" className="form-control" id="username" name="userName"
-                                   placeholder="Please enter a username" onChange={evt => this.setState({"userName":evt.target.value})}/>
-                                   //set the changes of usernmae to state
+                            <input type="text" className="form-control" id="username" name="username"
+                                   placeholder="Please enter a username" onChange={evt => this.setState({"username":evt.target.value})}/>
+                                   {/*//set the changes of usernmae to state*/}
                         </div>
                         <div className="form-group">
                             <label htmlFor="password">Password: <span style={{color:"red"}}>* </span> </label>
                             <input type="password" className="form-control" id="password" name="password"
                                    placeholder="Please enter a password" onChange={evt => this.setState({"password":evt.target.value})}/>
-                                   //set changes of password to state
+                                   {/*//set changes of password to state*/}
                         </div>
                         <button type="button" className="btn btn-success btn-block" onClick={this.handleSubmit.bind(this)}>Sign up</button>
-
-                    <div className="message">
+                        </form>
+                        <div className="message">
                         <p>Already Sign Up? <a href="/login">Sign In here</a>.</p>
                     </div>
                 </div>

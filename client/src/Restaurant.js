@@ -54,7 +54,7 @@ filterList(){
          Contact Number: {restaurant.r_number}
       </Media>
     </Media> 
-    // when Details button is clicked, pass the restaurant id to the Detail page.
+    {/*// when Details button is clicked, pass the restaurant id to the Detail page.*/}
     <Button color="success" style={{marginLeft:400}} href={"/Resdetails/"+restaurant._id}>Details</Button>{' '}
     
     

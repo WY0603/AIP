@@ -87,8 +87,9 @@ render(){
     
       <Form style={{marginLeft:150}}>
         <FormGroup>
-          <Label for="exampleSelect">Number of Customers: <span style={{color:"red"}}>* </span> </Label> 
-          <Input type="select" name="select" id="exampleSelect" style={{height:20,width:100}}
+          <Label for="exampleSelect">Number of Customers: <span style={{color:"red"}}>* </span> </Label><br/>
+
+            <select type="select" name="select" id="exampleSelect" style={{height:30,width:200}}
             onChange={evt => this.setState({"cusno":evt.target.value})}> 
              
             <option>1</option>
@@ -101,13 +102,13 @@ render(){
             <option>8</option>
             <option>9</option>
             <option>10</option>
-          </Input>
-          <p style={{color:'red'}}>* For group customer more than 10 people, please contact the restaurant for arrangement.  </p>
+            </select>
+            <p style={{color:'red'}}>* For group customer more than 10 people, please contact the restaurant for arrangement.  </p>
         </FormGroup>
 
         <FormGroup>
-          <Label for="exampleSelect">Time: <span style={{color:"red"}}>* </span></Label>
-          <Input type="select" name="select" id="exampleSelect" style={{height:20,width:100}}
+          <Label for="exampleSelect">Time: <span style={{color:"red"}}>* </span></Label><br/>
+          <select type="select" name="select" id="exampleSelect" style={{height:30,width:200}}
             onChange={evt => this.setState({"time":evt.target.value})}>
               
             <option>10:00</option>
@@ -122,7 +123,7 @@ render(){
             <option>19:00</option>
             <option>20:00</option>
             <option>21:00</option>
-          </Input>
+          </select>
         </FormGroup>
         <FormGroup>
           <Label for="exampleDate">Date: <span style={{color:"red"}}>* </span></Label>

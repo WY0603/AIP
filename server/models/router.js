@@ -20,7 +20,6 @@ router.post('/login', function(req, res){
         User.findOne({
                 username: user.username,
                 password: md5(md5(user.password))
-
             },function (err, user) {
             if (err) {
                 return res.status(500).json({
@@ -55,24 +54,27 @@ router.post('/login', function(req, res){
 router.post('/register', function(req, res){
     var user = new User(req.body)
     console.log(req.body);
-    user.password = md5(md5(user.password))
-    User.find({
-        username: user.userName
+    //user.password = md5(md5(user.password))
+    User.findOne({
+        username: user.username,
+
     },function (err, result) {
-           
             if (err) {
                 return res.status(500).json({
                     err_code: 500,
                     message: err.message
+
                 })
             }
-            if (result.username) {
+            if (result) {
+                console.log(result)
                 return res.status(200).json({
                     err_code: 1,
                     message: 'Username existed, please change to another username.'
                 })
             }else{
             user.save()
+            console.log("---------------")
             res.status(200).json({
                 err_code: 0,
                 message: 'Signup successfully.'
