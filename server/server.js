@@ -3,6 +3,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 var mongoose = require('mongoose');
 var router = require('./models/router');
+// parse the request body of the post request by body-parser express middleware
 var bodyParser = require('body-parser');
 var md5 = require('blueimp-md5');
 var User = require('./models/user');
