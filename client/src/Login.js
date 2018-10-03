@@ -27,10 +27,9 @@ export default class Login extends Component {
         .then(response=>response.json())
         .then(responseJson => {
 
-          
             if(responseJson.err_code === 0){
                 // after log in successfully, set username to local storage
-                 localStorage.setItem("username", this.state.username.trim());
+                localStorage.setItem("username", this.state.username.trim());
                 window.location.href="/restaurant";
             }
             else{

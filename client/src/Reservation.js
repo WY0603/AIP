@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import Header from "./Header";
 
 export default class Reservation extends Component {
@@ -48,7 +48,7 @@ handleSubmit(){
 var emailReg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
 // validate not empty input 
-if (this.state.email.trim().length == 0 &&
+if (this.state.email.trim().length === 0 &&
     this.state.date !== null){
   alert ("* area must be filled.");
 // email validation 
@@ -70,6 +70,11 @@ fetch('/reservation',{
             }
             else if(responseJson.err_code === 1){
                 alert(responseJson.message);
+            }else{
+                if(responseJson.err_code === 2){
+                    alert(responseJson.message);
+                    window.location.href="/login";
+                }
             }
 
         })
@@ -89,7 +94,7 @@ render(){
         <FormGroup>
           <Label for="exampleSelect">Number of Customers: <span style={{color:"red"}}>* </span> </Label><br/>
 
-            <select type="select" name="select" id="exampleSelect" style={{height:30,width:200}}
+            <Input type="select" name="select" id="exampleSelect" style={{height:35,width:200}}
             onChange={evt => this.setState({"cusno":evt.target.value})}> 
              
             <option>1</option>
@@ -102,13 +107,13 @@ render(){
             <option>8</option>
             <option>9</option>
             <option>10</option>
-            </select>
+            </Input>
             <p style={{color:'red'}}>* For group customer more than 10 people, please contact the restaurant for arrangement.  </p>
         </FormGroup>
 
         <FormGroup>
           <Label for="exampleSelect">Time: <span style={{color:"red"}}>* </span></Label><br/>
-          <select type="select" name="select" id="exampleSelect" style={{height:30,width:200}}
+          <Input type="select" name="select" id="exampleSelect" style={{height:35,width:200}}
             onChange={evt => this.setState({"time":evt.target.value})}>
               
             <option>10:00</option>
@@ -123,7 +128,7 @@ render(){
             <option>19:00</option>
             <option>20:00</option>
             <option>21:00</option>
-          </select>
+          </Input>
         </FormGroup>
         <FormGroup>
           <Label for="exampleDate">Date: <span style={{color:"red"}}>* </span></Label>

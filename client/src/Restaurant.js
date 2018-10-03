@@ -40,26 +40,26 @@ filterList(){
     let restaurants = updatedList.map((restaurant,index,array)=>{
       return(
           
-      <div key={index}>
-      <Media>
-      <Media left href="#">
-        <Media object src={restaurant.r_pic}  style={{height:200,width:200}} alt="Generic placeholder image" />
-      </Media>
-      <Media body>
-        <Media heading>
+      <div key={index} style={{height:300,width:650,float :'left',border:2}}>
+          <Media>
+          <Media left href="#">
+            <Media object src={restaurant.r_pic}  style={{height:200,width:200}} alt="Generic placeholder image" />
+          </Media>
+          <Media body style={{float :'left'}}>
+          <Media heading>
           {restaurant.r_name}
-        </Media>
-         Address: {restaurant.r_address}
-         <br/>
-         Contact Number: {restaurant.r_number}
-      </Media>
-    </Media> 
-    {/*// when Details button is clicked, pass the restaurant id to the Detail page.*/}
-    <Button color="success" style={{marginLeft:400}} href={"/Resdetails/"+restaurant._id}>Details</Button>{' '}
+          </Media>
+          Address: {restaurant.r_address}
+          <br/>
+          Contact Number: {restaurant.r_number}
+          </Media>
+          </Media>
+          {/*// when Details button is clicked, pass the restaurant id to the Detail page.*/}
+          <Button color="success" style={{marginLeft:400}} href={"/Resdetails/"+restaurant._id}>Details</Button>{' '}
     
     
-    <p>_____________________________________________________________</p>
-          </div>
+          <p>_____________________________________________________________</p>
+      </div>
           )
 
     })

@@ -40,31 +40,55 @@ class Resdetails extends Component {
       <div>
       <Header />
       </div>
-     <Media>
-      <Media left href="#">
+     <Media style={{background:'#eee'}}>
+      <Media left href="#" className="col-md-3 col-sm-2 col-xs-2">
         <Media object src={this.state.resDetails.r_pic}  style={{height:300,width:300}} alt="Generic placeholder image"  />
       </Media>
-      <Media body>
-        <Media heading>
-          {this.state.resDetails.r_name}
+      <Media body style={{float:'left'}} className="col-md-6 col-sm-2 col-xs-1">
+        <Media heading  >
+            <div >
+                {this.state.resDetails.r_name}
+            </div>
+
         </Media>
-          Address: {this.state.resDetails.r_address}
-          <br/>
-          Tel: {this.state.resDetails.r_number}
-          <br/>
-          Menu: {this.state.resDetails.r_menu}
-          
+          <div>
+              Address: {this.state.resDetails.r_address}
+          </div>
+          <div >
+              <br/>
+              Tel: {this.state.resDetails.r_number}
+          </div><div>
+              <br/>
+              Menu: {this.state.resDetails.r_menu}
+          </div>
+
       </Media>
-    </Media>
+         <Button color="success" style={{marginLeft:100,marginTop:250}} href={"/Reservation/"+this.state.resDetails._id}>Book</Button>{' '}
+
+     </Media>
     <br/>
      {/*// pass the restaurant id to the Reservation page.*/}
-    <Button color="success" style={{marginLeft:400}} href={"/Reservation/"+this.state.resDetails._id}>Book</Button>{' '}
-      
+
+
+
+      <div className="col-md-3">
+
       </div>
+
+
+
+
+
+
+      </div>
+
+
     );
   }
 }
 
 export default Resdetails;
+
+
 
 
