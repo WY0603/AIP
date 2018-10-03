@@ -9,10 +9,9 @@ import {
     BrowserRouter as Router,
     //HashRouter,
     Route,
-    NavLink,
     Switch
 } from 'react-router-dom'
-import Header from "./Header";
+
 import Home from "./Home";
 import Signup from "./Signup";
 import Login from "./Login";

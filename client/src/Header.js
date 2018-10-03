@@ -17,13 +17,20 @@ class Header extends React.Component{
                 "username": localStorage.username
 
             }
+            fetch('/sessionCheck',{
+                method:'post',
+                body: JSON.stringify(this.state),
+                headers: {"Content-Type":"application/json"},
+                credentials:'include',
+            })
+
            console.log(this.state.isLoggedin);
         }else{
             this.state = {
                 //if user has not logged in, set username to empty
                 "isLoggedin": false,
                 "username": ""
-            
+
             }
         }
     }
@@ -31,12 +38,18 @@ class Header extends React.Component{
     handleLogout(){
        localStorage.username = "";
        window.location.href="/";
+       fetch('/clssession',{
+           method:'post',
+           body: JSON.stringify(this.state),
+           headers: {"Content-Type":"application/json"},
+           credentials:'include',
+       })
     }  
 
     render() {
         const isLoggedin = this.state.isLoggedin;
         let button;
-        console.log(isLoggedin);
+        //console.log(isLoggedin);
         // handle the login and logout button switch according the state of isLoggedin. 
          if (isLoggedin){
                         button = 
@@ -58,7 +71,7 @@ class Header extends React.Component{
                         <div className="col-md-2">
                             <NavLink exact to="/" style={{color: 'white'}}  >Home</NavLink>
                         </div>
-                        <div className="col-md-2" >
+                        <div className="col-md-2 col-xs" >
                             <NavLink to='/restaurant' style={{color: 'white'}} >Restaurant</NavLink>
                         </div>
                         <div className="col-md" ></div>
@@ -66,7 +79,7 @@ class Header extends React.Component{
 
                          {button}
 
-                        <div className="col-md-1 btn btn-outline-success ">
+                        <div className="col-md-1 col-xs btn btn-outline-success ">
                             <NavLink to='/signup' style={{color: 'white'}} >Signup</NavLink>
                         </div>
 

@@ -10,6 +10,37 @@ var mailer = require('./mailer')
 router.post('/', function(req, res){
 
 })
+// check session
+router.post('/sessionCheck',function (req,res) {
+    if(!req.session.userInfo) {
+        console.log("xxxxxxx")
+        req.session.regenerate(function (err) {
+            req.session.userInfo = req.body.username;
+            res.status(200).json({
+                err_code: 0,
+                message: 'login success'
+            })
+        })
+    }
+
+})
+router.post('/clssession',function (req,res) {
+    req.session.destroy(function(err) {
+        if(err){
+            res.json({err_code: 2, message: 'log out failed'});
+            return;
+        }
+
+        // req.session.loginUser = null;
+        res.clearCookie('identityKey');
+         res.status(200).json({
+            err_code:2,
+            message:'log out success'
+         })
+    })
+
+})
+
 //process login request
 router.post('/login', function(req, res){
     //get request params
@@ -34,14 +65,15 @@ router.post('/login', function(req, res){
                     message: 'Username or password is invalid.'
                 })
             }
-            // req.session.regenerate(function(err){
-                // req.session.userInfo = '123';
-                res.status(200).json({
-                    err_code: 0,
+              req.session.regenerate(function(err){
+                    req.session.userInfo = user.username;
+                     //console.log(req.session)
+                    res.status(200).json({
+                        err_code: 0,
                     message: 'login success'
                 })
             })
-        // })
+         })
     }else{
         res.send('error');
     }
@@ -53,7 +85,7 @@ router.post('/login', function(req, res){
 router.post('/register', function(req, res){
     // get request params
     var user = new User(req.body)
-    console.log(req.body);
+    //console.log(req.body);
     //Encrypt password with md5
     user.password = md5(md5(user.password))
     // check database if there already have same username
@@ -86,6 +118,8 @@ router.post('/register', function(req, res){
 
 // get all restaurant list
 router.get('/resListAll', function(req, res){
+    //console.log("all"+req.sessionID);
+
     Restaurant.find(function (err, result) {
              
             if (err) {
@@ -130,15 +164,19 @@ router.get('/resDetails/:id', function(req, res){
 // })
 //process reservation request
 router.post('/reservation', function(req, res){
-    // get reservation request
-    var reserv = new Reservation(req.body)
-    //console.log(reserv);
-    //find the same time reservation
-    Reservation.find({
-        r_id: reserv.r_id,
-        time: reserv.time,
-        date: reserv.date
-    },function (err, result) {
+    //check req.sesson.Info
+
+    if(req.session.userInfo) {
+       // console.log("111111111")
+        // get reservation request
+        var reserv = new Reservation(req.body)
+        //console.log(reserv);
+        //find the same time reservation
+        Reservation.find({
+            r_id: reserv.r_id,
+            time: reserv.time,
+            date: reserv.date
+        }, function (err, result) {
             //console.log(result);
             if (err) {
                 return res.status(500).json({
@@ -147,28 +185,37 @@ router.post('/reservation', function(req, res){
                 })
             }
             // check if exceed the max number
-         Restaurant.find({_id: reserv.r_id
-         }, function (err, res_result) {
-            if (res_result[0].r_maxtable > result.length){
-                //console.log(res_result[0].r_name);
-                reserv.resname = res_result[0].r_name;
-                //console.log(reserv.resname);
-                // all ok send email
-                mailer.sendMailer(reserv);
-                   reserv.save(); // save reservation information to database
-                   res.status(200).json({
-                   err_code: 0,
-                    
-                })
-            }else{ // if it reach max number
-                 res.status(500).json({
-                    err_code: 1,
-                    message: 'Sorry, reservation at this time is full.'
-                })
-            }
-         })   
-           
-    })
+            Restaurant.find({
+                _id: reserv.r_id
+            }, function (err, res_result) {
+                if (res_result[0].r_maxtable > result.length) {
+                    //console.log(res_result[0].r_name);
+                    reserv.resname = res_result[0].r_name;
+                    //console.log(reserv.resname);
+                    // all ok send email
+                    mailer.sendMailer(reserv);
+                    reserv.save(); // save reservation information to database
+                    res.status(200).json({
+                        err_code: 0,
+
+                    })
+                } else { // if it reach max number
+                    res.status(500).json({
+                        err_code: 1,
+                        message: 'Sorry, reservation at this time is full.'
+                    })
+                }
+            })
+
+        })
+    }else{
+        //console.log("222222222")
+        res.status(200).json({
+            err_code: 2,
+            message: 'please login'
+        })
+
+    }
     
    
 })
