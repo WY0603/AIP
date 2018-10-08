@@ -123,9 +123,9 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [React](https://reactjs.org/) - The web framework used
+* [Express](http://expressjs.com/) - Back-end framework used
+* [EC2](https://aws.amazon.com/cn/ec2/?nc2=h_m1) - Used to deploy our application
 
 ## Contributing
 
@@ -138,7 +138,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## Authors
 
 * **Zeyuan Lin** 
-* **Jingjie** 
+* **Jie Jing** 
 * **Yao Wang** 
 
 
