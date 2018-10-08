@@ -16,7 +16,7 @@ Easy Dining is a restaurant reservation website. In this website, user is able t
 
 ## Getting Started
 
-This website mainly utilizes React for the front-end, Node.js for the server side and .... for database. 
+This website mainly utilizes React for the front-end, Node.js for the server side. 
 
 ### Prerequisites
 
@@ -64,17 +64,9 @@ Also, be sure to have `git` available in your PATH, `npm` might need it.
 
 ### Install and configure Node
 
-    $ git clone https://github.com/ORG/PROJECT.git
-    $ cd PROJECT
+    $ git clone git@github.com:WY0603/AIP.git
+    $ cd AIP/server
     $ npm install
-
-#### Configure app
-
-Copy `config.sample.json` to `config.json` then edit it with the url where you have setup:
-
-- backend api
-- oauth like endpoint for auth
-- development
 
 #### Start & watch
 
@@ -134,9 +126,10 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Zeyuan Lin** 
+* **Jingjie** 
+* **Yao Wang** 
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
