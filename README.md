@@ -1,56 +1,118 @@
 # AIP
 
-One Paragraph of project description goes here
+Easy Dining is a restaurant reservation website. In this website, user is able to perform the main functions as followed:
+1. Sigh up with unique username;
+2. Log in and log out; 
+3. User is able to search restaurant by keywords;
+4. User is able to view restaurant details;
+5. User is able to view the menu of the reserved restaurant online.
+6. User is able to make a reservation only when he has an account logged in. 
+7. User is able to select time of reservation and number of people for the reservation; 
+8. User is able to check his reservation records on the website;
+9. User is able to change or cancel the upcoming and future reservation; 
+10. Email will be sent to user if reservation is made successfully. 
+
+
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+This website mainly utilizes React for the front-end, Node.js for the server side and .... for database. 
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+For development, you are required to install React and Node.js on your environement.
 
-```
-Give examples
-```
 
-### Installing
+#### Node
 
-A step by step series of examples that tell you how to get a development env running
+[Node](http://nodejs.org/) is really easy to install & now include [NPM](https://npmjs.org/).
+You should be able to run the following command after the installation procedure
+below.
 
-Say what the step will be
+    $ node --version
+    v0.10.24
 
-```
-Give the example
-```
+    $ npm --version
+    1.3.21
 
-And repeat
+##### Node installation on OS X
 
-```
-until finished
-```
+You will need to use a Terminal. On OS X, you can find the default terminal in
+`/Applications/Utilities/Terminal.app`.
 
-End with an example of getting some data out of the system or using it for a little demo
+Please install [Homebrew](http://brew.sh/) if it's not already done with the following command.
 
-## Running the tests
+    $ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 
-Explain how to run the automated tests for this system
+If everything when fine, you should run
 
-### Break down into end to end tests
+    brew install node
 
-Explain what these tests test and why
+##### Node installation on Linux
 
-```
-Give an example
-```
+    sudo apt-get install python-software-properties
+    sudo add-apt-repository ppa:chris-lea/node.js
+    sudo apt-get update
+    sudo apt-get install nodejs
 
-### And coding style tests
+##### Node installation on Windows
 
-Explain what these tests test and why
+Just go on [official Node.js website](http://nodejs.org/) & grab the installer.
+Also, be sure to have `git` available in your PATH, `npm` might need it.
 
-```
-Give an example
-```
+---
+
+### Install and configure Node
+
+    $ git clone https://github.com/ORG/PROJECT.git
+    $ cd PROJECT
+    $ npm install
+
+#### Configure app
+
+Copy `config.sample.json` to `config.json` then edit it with the url where you have setup:
+
+- backend api
+- oauth like endpoint for auth
+- development
+
+#### Start & watch
+
+    $ npm start
+
+#### Simple build for production
+
+    $ npm run build
+
+#### Update sources
+
+Some packages usages might change so you should run `npm prune` & `npm install` often.
+A common way to update is by doing
+
+    $ git pull
+    $ npm prune
+    $ npm install
+
+To run those 3 commands you can just do
+
+    $ npm run pull
+
+**Note:** Unix user can just link the `git-hooks/post-merge`:
+
+#### Enable git hooks (unix only :/)
+
+    $ npm run create-hook-symlinks
+
+##### `post-merge` (≃ `npm install`)
+
+This hook will `npm prune && npm install` each time you `git pull` something if the `package.json` has been modified.
+
+##### `pre-commit` (≃ `npm test`)
+
+This hook will just ensure you will commit something not broken bye pruning npm packages not in the `package.json` & eventually reinstall missings/not correctly removed packages.
+Then it will try a production build.
+
+
 
 ## Deployment
 
@@ -86,15 +148,10 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * Inspiration
 * etc
 
-This repository is a restaurant reservation website.
 
-1. This website provides restaurant reservation function to users.
-2. User can search restaurant by keywords and see its popularity on the website.
-3. User has to sign up before making reservation on the website. 
-4. User is able to input time of reservation and number of people on the website. 
-5. User is able to check his reservation records on the website.
-6. Email will be sent to user if he make a reservation successfully. 
-7. User is able to view the menu of the reserved restaurant online.
+
+
+
 
 Server startup method: 
 
