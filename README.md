@@ -20,7 +20,7 @@ This website mainly utilizes React for the front-end, Node.js for the server sid
 
 ### Prerequisites
 
-For development, you are required to install React and Node.js on your environement.
+For development, you are required to install Node...... on your environement.
 
 
 #### Node
@@ -62,21 +62,32 @@ Also, be sure to have `git` available in your PATH, `npm` might need it.
 
 ---
 
-### Install and configure Node
+### Install
 
     $ git clone git@github.com:WY0603/AIP.git
     $ cd AIP/server
     $ npm install
 
-#### Start & watch
+### Server startup
+   1.open file: /client/node_modules/react-scripts/scripts/start.js. 
 
+   2.modify const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;. 
+      to const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 8080;. 
+  
+   3.open terminal and get into project folder. 
+
+   4.input node server.js to start back-end server.
+
+### Start & watch
+
+    $ cd AIP/client
     $ npm start
 
-#### Simple build for production
+### Simple build for production
 
     $ npm run build
 
-#### Update sources
+### Update sources
 
 Some packages usages might change so you should run `npm prune` & `npm install` often.
 A common way to update is by doing
@@ -91,15 +102,15 @@ To run those 3 commands you can just do
 
 **Note:** Unix user can just link the `git-hooks/post-merge`:
 
-#### Enable git hooks (unix only :/)
+### Enable git hooks (unix only :/)
 
     $ npm run create-hook-symlinks
 
-##### `post-merge` (≃ `npm install`)
+#### `post-merge` (≃ `npm install`)
 
 This hook will `npm prune && npm install` each time you `git pull` something if the `package.json` has been modified.
 
-##### `pre-commit` (≃ `npm test`)
+#### `pre-commit` (≃ `npm test`)
 
 This hook will just ensure you will commit something not broken bye pruning npm packages not in the `package.json` & eventually reinstall missings/not correctly removed packages.
 Then it will try a production build.
@@ -135,28 +146,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
 
 
 
 
-
-
-Server startup method: 
-
-1.open file: /client/node_modules/react-scripts/scripts/start.js. 
-
-2.modify const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;. 
-  to const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 8080;. 
-  
-3.open terminal and get into project folder. 
-
-4.input node server.js to startup back-end server. 
-
-5.open other terminal and access to project folder, then input 'cd client' to access front-end folder. 
-
-6.input npm start to startup front-end server. 
