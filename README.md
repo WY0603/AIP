@@ -20,7 +20,7 @@ This website mainly utilizes React for the front-end, Node.js for the server sid
 
 ### Prerequisites
 
-For development, you are required to install Node...... on your environement.
+For development, you are required to install Node，React on your environement.
 
 
 #### Node
