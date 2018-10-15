@@ -129,6 +129,7 @@ Then it will try a production build.
     $ npm install
 3. After installing dependency package in the client and server side, you can run this project in the client folder
     $ npm start
+    
 
 ## Built With
 
