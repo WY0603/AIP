@@ -8,9 +8,7 @@ Easy Dining is a restaurant reservation website. In this website, user is able t
 5. User is able to view the menu of the reserved restaurant online.
 6. User is able to make a reservation only when he has an account logged in. 
 7. User is able to select time of reservation and number of people for the reservation; 
-8. User is able to check his reservation records on the website;
-9. User is able to change or cancel the upcoming and future reservation; 
-10. Email will be sent to user if reservation is made successfully. 
+8. Email will be sent to user if reservation is made successfully. 
 
 
 
@@ -18,10 +16,16 @@ Easy Dining is a restaurant reservation website. In this website, user is able t
 
 This website mainly utilizes React for the front-end, Node.js for the server side. 
 
+
 ### Prerequisites
 
 For development, you are required to install Node，React on your environement.
 
+#### React
+
+For the [react](https://reactjs.org/docs/getting-started.html), you can follow the React tutorial and learn how to install and use it.
+
+Here is the link of the React tutorial. https://reactjs.org/docs/getting-started.html
 
 #### Node
 
@@ -119,7 +123,12 @@ Then it will try a production build.
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+1. You need to clone this project to your own system.
+    $ git clone https://github.com/WY0603/AIP.git
+2. You need to install dependency package in the cilent and server folder
+    $ npm install
+3. After installing dependency package in the client and server side, you can run this project in the client folder
+    $ npm start
 
 ## Built With
 
