@@ -78,7 +78,7 @@ Also, be sure to have `git` available in your PATH, `npm` might need it.
    2.modify const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;. 
       to const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 8080;. 
   
-   3.open terminal and get into project folder. 
+   3.open terminal and get into server folder. 
 
    4.input node server.js to start back-end server.
 
